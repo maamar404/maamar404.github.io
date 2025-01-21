@@ -5,8 +5,8 @@ body {
 }
 
 nav {
-    background-color: #333;
-    color: #fff;
+    background-color: #3A4D9C;
+    color: #B6CD02;
     padding: 10px;
 }
 
@@ -50,7 +50,7 @@ nav ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: #B6CD02;
     text-align: center;
 }
 
@@ -67,7 +67,7 @@ nav ul li a {
 }
 
 .content {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(#3A4D9C, 0.5);
     padding: 20px;
     border-radius: 10px;
 }
@@ -87,7 +87,7 @@ nav ul li a {
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    color: #B6CD02;
     border: none;
     padding: 10px;
     cursor: pointer;
