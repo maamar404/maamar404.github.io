@@ -241,7 +241,7 @@ function initContactForm() {
             }
             
             // Create mailto link with form data
-            const mailtoLink = `mailto:mohamed.maamar@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+            const mailtoLink = `mailto:mohamedmaamar7@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
                 `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
             )}`;
             
