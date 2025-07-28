@@ -277,6 +277,7 @@ p {
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
+    margin-top: 3rem;
     margin-bottom: 1rem;
     color: #333;
 }
@@ -1103,3 +1104,4 @@ section {
         padding: 1.5rem;
     }
 }
+
