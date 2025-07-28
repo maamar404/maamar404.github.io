@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Maamar - Full Stack Developer & Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Mohamed<span class="accent">.</span></a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="accent">Mohamed Maamar</span>
+                    </h1>
+                    <h2 class="hero-subtitle">Full Stack Developer & Creative Designer</h2>
+                    <p class="hero-description">
+                        I craft digital experiences that blend functionality with beautiful design. 
+                        Specializing in web development, UI/UX design, and graphic design.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="profile-card">
+                        <div class="profile-bg"></div>
+                        <div class="profile-content">
+                            <div class="avatar">
+                                <img src="img/profile.jpg" alt="Mohamed Maamar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-links fade-in-up">
+                <a href="https://github.com/maamar404" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://behance.net/mohamedmaamar7" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-behance"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text fade-in-left">
+                    <h3>Passionate Developer & Designer</h3>
+                    <p>
+                        I’m a full-stack developer passionate about front-end development 
+                        and UI/UX design. I enjoy building clean, responsive, and user-focused 
+                        interfaces that bring ideas to life through both code and design.
+                    </p>
+                    <p>
+                        With experience as a freelance graphic designer, I’ve worked on diverse creative 
+                        projects that sharpened my eye for detail and strengthened my ability to deliver 
+                        polished, engaging visuals. This creative background allows me to bridge the gap 
+                        between design and development seamlessly.
+
+                        Driven by curiosity and a passion for innovation, I’m always learning and eager 
+                        to take on new challenges.
+                    </p>
+                    
+                    <div class="highlights">
+                        <ul class="highlight-list">
+                            <li><strong>🎯 5+ Personal Projects:</strong> Focused on web design, interactivity, and user experience.</li>
+                            <li><strong>💼 Freelance Graphic Designer:</strong> Created digital content and branding materials.</li>
+                            <li><strong>📚 Self-Taught & Motivated:</strong> Continuously learning new tools and best practices.</li>
+                            <li><strong>🎨 Passion for Aesthetics:</strong> Committed to merging design with functionality.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="about-image fade-in-right">
+                    <div class="image-container">
+                        <div class="image-bg"></div>
+                        <img src="img/profile.jpg" alt="About Mohamed">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">Technologies and tools I work with</p>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Frontend Development -->
+                <div class="skill-category fade-in-up">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend Development</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-bootstrap"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-tailwindcss"></i>
+                            <span>Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Development -->
+                <div class="skill-category fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="category-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend Development</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Design -->
+                <div class="skill-category fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="category-header">
+                        <i class="fas fa-palette"></i>
+                        <h3>Design</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fas fa-pen-nib"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Graphic Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-adobe"></i>
+                            <span>Adobe XD</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-image"></i>
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-vector-square"></i>
+                            <span>Illustrator</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">My Portfolio</h2>
+                <p class="section-subtitle">Recent projects I've worked on</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item fade-in-up">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23667eea'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EE-Commerce%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EPlatform%3C/text%3E%3C/svg%3E" alt="E-Commerce Platform">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>E-Commerce Platform</h3>
+                                <p>Full-stack e-commerce solution with React and Node.js</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="portfolio-item fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23764ba2'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3ETask Management%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EApp%3C/text%3E%3C/svg%3E" alt="Task Management App">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Task Management App</h3>
+                                <p>Intuitive task management with drag & drop functionality</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="portfolio-item fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f093fb'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EBrand Identity%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EDesign%3C/text%3E%3C/svg%3E" alt="Brand Identity Design">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Brand Identity Design</h3>
+                                <p>Complete brand identity for a tech startup</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-behance"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tags">
+                            <span class="tag">Illustrator</span>
+                            <span class="tag">Photoshop</span>
+                            <span class="tag">Branding</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="portfolio-item fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2348c6ef'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EWeather%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EDashboard%3C/text%3E%3C/svg%3E" alt="Weather Dashboard">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Weather Dashboard</h3>
+                                <p>Real-time weather app with beautiful UI</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API</span>
+                            <span class="tag">SCSS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="portfolio-item fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2351cf66'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3ERestaurant%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EWebsite%3C/text%3E%3C/svg%3E" alt="Restaurant Website">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Restaurant Website</h3>
+                                <p>Modern restaurant website with online ordering</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="portfolio-item fade-in-up" style="animation-delay: 1s;">
+                    <div class="portfolio-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23ffd43b'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EMobile App%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EUI Design%3C/text%3E%3C/svg%3E" alt="Mobile App UI Design">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Mobile App UI Design</h3>
+                                <p>Clean and modern mobile app interface design</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-dribbble"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tags">
+                            <span class="tag">Figma</span>
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together on your next project</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info fade-in-left">
+                    <h3>Let's create something amazing together</h3>
+                    <p>
+                        I'm always interested in new opportunities and exciting projects. 
+                        Whether you need a website, mobile app, or brand identity, let's discuss 
+                        how I can help bring your vision to life.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="label">Email</span>
+                                <span class="value">mohamedmaamar7@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span class="label">Phone</span>
+                                <span class="value">+212 613 433 722</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="label">Location</span>
+                                <span class="value">Casablanca, Morocco</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in-right">
+                    <form id="contactForm" action="mailto:mohamedmaamar7@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Mohamed Maamar. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/maamar404" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://behance.net/mohamedmaamar7" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
