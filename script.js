@@ -541,7 +541,7 @@ function initPreloader() {
     preloader.innerHTML = `
         <div class="preloader-content">
             <div class="preloader-logo">
-                <span>Mohamed<span class="accent">.</span></span>
+                <img src="img/logo.png" alt="Logo" style="width: 100px; height: auto;">
             </div>
             <div class="preloader-spinner">
                 <div class="spinner"></div>
