@@ -302,11 +302,6 @@ p {
     margin-bottom: 2rem;
 }
 
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .profile-card {
     position: relative;
