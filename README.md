@@ -1,35 +1,33 @@
-# 👨‍💻 Mohamed Maamar - Portfolio
-
+# 🚀 Mohamed Maamar - Modern Portfolio
 Personal portfolio website showcasing my skills as a Full Stack Developer & Creative Designer.
 
 ## 🌐 Live Demo
 **[mohamedmaamar.me](https://mohamedmaamar.me)**
 
 ## ✨ Features
-- **📱 Responsive Design**: Optimized for all devices
-- **🎨 Modern UI/UX**: Smooth animations and clean aesthetics  
-- **💼 Project Showcase**: Interactive portfolio with live demos
-- **📬 Contact Form**: Direct messaging capability
-- **🔗 Social Integration**: Links to GitHub, LinkedIn, Behance
+- **🎨 Modern Dark Theme**: Professional design with gradient accents and glassmorphism effects
+- **🎠 Interactive Carousels**: Auto-sliding project galleries with touch/swipe navigation
+- **📱 Responsive Design**: Mobile-first approach optimized for all devices
+- **⚡ Smooth Animations**: Scroll-triggered effects and floating background elements
+- **💫 Tailwind CSS v3**: Modern utility-first styling with custom configurations
 
-
-## 📁 Project Structure
-```
-portfolio/
-├── index.html          # Main page
-├── styles.css          # Custom styling
-├── script.js           # JavaScript functionality
-├── img/                # Images & assets
-└── favicon.ico         # Site icon
-```
+## 🛠️ Technologies
+- **Frontend**: HTML5, Tailwind CSS v3, JavaScript ES6+
+- **Design**: Responsive Grid, CSS Animations, Font Awesome 6.4.0
+- **Performance**: Optimized images, smooth scrolling, cross-browser compatibility
 
 ## 🔧 Setup
 ```bash
 # Clone repository
 git clone https://github.com/maamar404/maamar404.github.io.git
+cd maamar404.github.io
 
-# Open index.html in browser
-```
+# Install dependencies
+npm install
+
+# Build Tailwind CSS
+npm run build-css
+
 
 ## 📧 Contact
 - **Email**: [mohamedmaamar7@gmail.com](mailto:mohamedmaamar7@gmail.com)
