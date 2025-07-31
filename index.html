@@ -1,147 +1,350 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Maamar - Full Stack Developer & Designer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Font Awesome for icons -->
+    <link rel="icon" href="src/assets/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./dist/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeInUp': 'fadeInUp 0.8s ease-out',
+                        'fadeInLeft': 'fadeInLeft 0.8s ease-out',
+                        'fadeInRight': 'fadeInRight 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-pattern': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .project-card {
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4834d4, #686de0);
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #00d2d3, #54a0ff);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        /* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+    left: 15px;
+}
+
+.carousel-next {
+    right: 15px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+    </style>
 </head>
-<body>
+<body class="font-inter bg-gray-900 text-white overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="img/logo.png" width="60" alt="Mohamed Maamar">
+    <nav class="fixed top-0 w-full z-50 glass-effect transition-all border-none duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <img src="src/assets/logo.png" width="50" alt="Mohamed Maamar" class="rounded-full">
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-blue-400 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</a>
+                        <a href="#about" class="nav-link text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">About</a>
+                        <a href="#skills" class="nav-link text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Skills</a>
+                        <a href="#portfolio" class="nav-link text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Portfolio</a>
+                        <a href="#contact" class="nav-link text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
             </div>
             
-            <!-- Mobile menu button -->
-            <div class="nav-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden bg-gray-800 rounded-lg mt-2 p-4">
+                <a href="#home" class="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#portfolio" class="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="#contact" class="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
-            
-            <!-- Navigation menu -->
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
         </div>
         
-        <div class="container">
-            <div class="hero-content fade-in">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="accent">Mohamed Maamar</span>
-                    </h1>
-                    <h2 class="hero-subtitle">Full Stack Developer & Creative Designer</h2>
-                    <p class="hero-description">
-                        I craft digital experiences that blend functionality with beautiful design. 
-                        Specializing in web development, UI/UX design, and graphic design.
-                    </p>
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 opacity-90"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left space-y-8 animate-fadeInLeft">
+                    <div class="space-y-4">
+                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                            Hi, I'm <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Mohamed Maamar</span>
+                        </h1>
+                        <h2 class="text-2xl lg:text-3xl text-gray-300 font-light">Full Stack Developer & Creative Designer</h2>
+                        <p class="text-lg text-gray-400 max-w-2xl">
+                            I craft digital experiences that blend functionality with beautiful design. 
+                            Specializing in web development, UI/UX design, and graphic design.
+                        </p>
+                    </div>
                     
-                    <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#portfolio" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                            Get In Touch
+                        </a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="flex gap-6 justify-center lg:justify-start pt-8">
+                        <a href="https://github.com/maamar404" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="https://behance.net/mohamedmaamar7" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-behance text-xl"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="img/logo.png" alt="Mohamed Maamar" class="profile-image">
+                
+                <div class="flex justify-center lg:justify-end animate-fadeInRight">
+                    <div class="relative">
+                        <div class="w-80 h-80 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse-slow"></div>
+                        <img src="src/assets/logo.png" alt="Mohamed Maamar" class="absolute inset-4 w-72 h-72 rounded-full object-cover shadow-2xl">
+                    </div>
                 </div>
-
-            </div>
-            
-            <!-- Social Links -->
-            <div class="social-links fade-in-up">
-                <a href="https://github.com/maamar404" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://behance.net/mohamedmaamar7" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-behance"></i>
-                </a>
             </div>
         </div>
         
-        <!-- Scroll indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-arrow">
-                <i class="fas fa-chevron-down"></i>
-            </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-white opacity-70"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">About Me</h2>
+                <p class="text-xl text-gray-400">Get to know me better</p>
             </div>
             
-            <div class="about-content">
-                <div class="about-text fade-in-left">
-                    <h3>Passionate Developer & Designer</h3>
-                    <p>
-                        I’m a full-stack developer passionate about front-end development 
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 animate-fadeInLeft">
+                    <h3 class="text-3xl font-bold text-blue-400">Passionate Developer & Designer</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        I'm a full-stack developer passionate about front-end development 
                         and UI/UX design. I enjoy building clean, responsive, and user-focused 
                         interfaces that bring ideas to life through both code and design.
                     </p>
-                    <p>
-                        With experience as a freelance graphic designer, I’ve worked on diverse creative 
+                    <p class="text-gray-300 leading-relaxed">
+                        With experience as a freelance graphic designer, I've worked on diverse creative 
                         projects that sharpened my eye for detail and strengthened my ability to deliver 
                         polished, engaging visuals. This creative background allows me to bridge the gap 
                         between design and development seamlessly.
-
-                        Driven by curiosity and a passion for innovation, I’m always learning and eager 
-                        to take on new challenges.
                     </p>
                     
-                    <div class="highlights">
-                        <ul class="highlight-list">
-                            <li><strong>🎯 5+ Personal Projects:</strong> Focused on web design, interactivity, and user experience.</li>
-                            <li><strong>💼 Freelance Graphic Designer:</strong> Created digital content and branding materials.</li>
-                            <li><strong>📚 Self-Taught & Motivated:</strong> Continuously learning new tools and best practices.</li>
-                            <li><strong>🎨 Passion for Aesthetics:</strong> Committed to merging design with functionality.</li>
-                        </ul>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-blue-400 text-2xl font-bold">5+</div>
+                            <div class="text-sm text-gray-300">Personal Projects</div>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-purple-400 text-2xl font-bold">2+</div>
+                            <div class="text-sm text-gray-300">Years Experience</div>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-green-400 text-2xl font-bold">10+</div>
+                            <div class="text-sm text-gray-300">Technologies</div>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-red-400 text-2xl font-bold">∞</div>
+                            <div class="text-sm text-gray-300">Learning</div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="about-image fade-in-right">
-                    <div class="image-container">
-                        <div class="image-bg"></div>
-                        <img src="img/profile.jpg" alt="About Mohamed">
+                <div class="flex justify-center animate-fadeInRight">
+                    <div class="relative">
+                        <div class="w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl transform rotate-6"></div>
+                        <img src="src/assets/profile.jpg" alt="About Mohamed" class="absolute inset-2 w-92 h-92 rounded-2xl object-cover shadow-2xl">
                     </div>
                 </div>
             </div>
@@ -149,400 +352,1175 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <p class="section-subtitle">Technologies and tools I work with</p>
+    <section id="skills" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">Skills & Expertise</h2>
+                <p class="text-xl text-gray-400">Technologies and tools I work with</p>
             </div>
             
-            <div class="skills-grid">
+            <div class="grid lg:grid-cols-3 gap-8">
                 <!-- Frontend Development -->
-                <div class="skill-category fade-in-up">
-                    <div class="category-header">
-                        <i class="fas fa-code"></i>
-                        <h3>Frontend Development</h3>
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-400">Frontend Development</h3>
                     </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-html5 text-orange-500 text-xl"></i>
                             <span>HTML5</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-css3-alt text-blue-500 text-xl"></i>
                             <span>CSS3</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js-square"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-js-square text-yellow-500 text-xl"></i>
                             <span>JavaScript</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-react text-cyan-400 text-xl"></i>
                             <span>React</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-bootstrap"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-bootstrap text-purple-500 text-xl"></i>
                             <span>Bootstrap</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-tailwindcss"></i>
-                            <span>Tailwind CSS</span>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <div class="w-5 h-5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded"></div>
+                            <span>Tailwind</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Backend Development -->
-                <div class="skill-category fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="category-header">
-                        <i class="fas fa-server"></i>
-                        <h3>Backend Development</h3>
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-server text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-400">Backend Development</h3>
                     </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-node-js text-green-500 text-xl"></i>
                             <span>Node.js</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-php"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fab fa-php text-indigo-400 text-xl"></i>
                             <span>PHP</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fas fa-database text-blue-400 text-xl"></i>
                             <span>MySQL</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fas fa-database text-green-400 text-xl"></i>
                             <span>MongoDB</span>
                         </div>
-                        
                     </div>
                 </div>
                 
                 <!-- Design -->
-                <div class="skill-category fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="category-header">
-                        <i class="fas fa-palette"></i>
-                        <h3>Design</h3>
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-palette text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-purple-400">Design</h3>
                     </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-pen-nib"></i>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fas fa-pen-nib text-blue-400 text-xl"></i>
                             <span>UI/UX Design</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-paint-brush"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fas fa-paint-brush text-pink-400 text-xl"></i>
                             <span>Graphic Design</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-adobe"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fas fa-vector-square text-purple-400 text-xl"></i>
                             <span>Adobe XD</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-image"></i>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg">
+                            <i class="fas fa-image text-cyan-400 text-xl"></i>
                             <span>Photoshop</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-vector-square"></i>
-                            <span>Illustrator</span>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">My Portfolio</h2>
-                <p class="section-subtitle">Recent projects I've worked on</p>
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-fadeInUp">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">My Portfolio</h2>
+            <p class="text-xl text-gray-400">Recent projects I've worked on</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 - KRONOS -->
+            <div class="project-card bg-gray-900 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openModal('kronos')">
+                <div class="relative overflow-hidden group">
+                    <img src="src/assets/kronos.png" alt="KRONOS E-Commerce" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-2">KRONOS E-Commerce</h3>
+                            <p class="text-sm opacity-90">Full-stack clothing brand platform</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Full Stack
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">React</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Node.js</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">MongoDB</span>
+                    </div>
+                </div>
             </div>
             
-            <div class="portfolio-grid">
-                <!-- Project 1 -->
-                <div class="portfolio-item fade-in-up">
-                    <div class="portfolio-image">
-                        <img src="img/kronos.png" alt="E-Commerce Platform">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>E-Commerce Platform KRONOS</h3>
-                                <p>Full-stack e-commerce clothing brand with React and Node.js</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
+            <!-- Project 2 - Golden Home -->
+            <div class="project-card bg-gray-900 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openModal('goldenhome')">
+                <div class="relative overflow-hidden group">
+                    <img src="src/assets/goldenhome.png" alt="Golden Home" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-2">Golden Home</h3>
+                            <p class="text-sm opacity-90">Construction agency website</p>
                         </div>
                     </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">Express.js</span>
-                            <span class="tag">Stripe</span>
-                            <span class="tag">Tailwind CSS</span>
-                        </div>
+                    <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Website
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="portfolio-item fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="portfolio-image">
-                        <img src="img/goldenhome.png" alt="Construction Agency Website Golden Home">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Construction Agency Website Golden Home</h3>
-                                <p>Website for a construction agency showcasing their services and projects</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-tags">
-                            <span class="tag">Html</span>
-                            <span class="tag">Css</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Bootstrap</span>
-                            <span class="tag">Php</span>
-                            <span class="tag">MySQL</span>
-                        </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">HTML</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">CSS</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">JavaScript</span>
                     </div>
                 </div>
-                
-                <!-- Project 3 -->
-                <div class="portfolio-item fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="portfolio-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f093fb'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EBrand Identity%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EDesign%3C/text%3E%3C/svg%3E" alt="Brand Identity Design">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Brand Identity Design</h3>
-                                <p>Complete brand identity for companies</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fab fa-behance"></i>
-                                    </a>
-                                </div>
-                            </div>
+            </div>
+            
+            <!-- Project 3 - Mawaqit -->
+            <div class="project-card bg-gray-900 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openModal('mawaqit')">
+                <div class="relative overflow-hidden group">
+                    <img src="src/assets/mawaqit.png" alt="Mawaqit" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-2">Mawaqit</h3>
+                            <p class="text-sm opacity-90">Prayer times app with beautiful UI</p>
                         </div>
                     </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-tags">
-                            <span class="tag">Illustrator</span>
-                            <span class="tag">Photoshop</span>
-                            <span class="tag">Branding</span>
-                        </div>
+                    <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        React App
                     </div>
                 </div>
-                
-                <!-- Project 4 -->
-                <div class="portfolio-item fade-in-up" style="animation-delay: 0.6s;">
-                    <div class="portfolio-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2348c6ef'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EWeather%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EDashboard%3C/text%3E%3C/svg%3E" alt="Weather Dashboard">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Weather App with API</h3>
-                                <p>Real-time weather app with beautiful UI</p>
-                                <div class="portfolio-links">
-                                    <a href="https://mohamedmaamar.me/weather-app-morocco" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-tags">
-                            <span class="tag">React js</span>
-                            <span class="tag">API</span>
-                            <span class="tag">Css</span>
-                        </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">React</span>
+                        <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Tailwind</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">API</span>
                     </div>
                 </div>
-                
-                <!-- Project 5 -->
-                <div class="portfolio-item fade-in-up" style="animation-delay: 0.8s;">
-                    <div class="portfolio-image">
-                        <img src="img/fitflex.jpg" alt="Fitness Club Website">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Fitness Club Website FITFLEX</h3>
-                                <p>Modern fitness club website one page concept</p>
-                                <div class="portfolio-links">
-                                    <a href="https://mohamedmaamar.me/fitflex" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
+            </div>
+            
+            <!-- Project 4 - Weather App -->
+            <div class="project-card bg-gray-900 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openModal('weather')">
+                <div class="relative overflow-hidden group">
+                    <div class="w-full h-64 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-cloud-sun text-4xl mb-2"></i>
+                            <h3 class="text-xl font-bold">Weather App</h3>
                         </div>
                     </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Bootstrap</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-2">Weather Dashboard</h3>
+                            <p class="text-sm opacity-90">Real-time weather app</p>
                         </div>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        API App
                     </div>
                 </div>
-                
-                <!-- Project 6 -->
-                <div class="portfolio-item fade-in-up" style="animation-delay: 1s;">
-                    <div class="portfolio-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23ffd43b'/%3E%3Ctext x='200' y='140' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EMovies App%3C/text%3E%3Ctext x='200' y='170' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EAPI integration%3C/text%3E%3C/svg%3E" alt="Mobile App UI Design">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h3>Movies App Infos</h3>
-                                <p>Moderne UI design for movies with API integration</p>
-                                <div class="portfolio-links">
-                                    <a href="https://mohamedmaamar.me/moviescope" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="portfolio-link">
-                                        <i class="fab fa-dribbble"></i>
-                                    </a>
-                                </div>
-                            </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">React</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">API</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 5 - FitFlex -->
+            <div class="project-card bg-gray-900 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openModal('fitflex')">
+                <div class="relative overflow-hidden group">
+                    <img src="src/assets/fitflex.png" alt="FitFlex" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-2">FitFlex</h3>
+                            <p class="text-sm opacity-90">Modern fitness club website</p>
                         </div>
                     </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-tags">
-                            <span class="tag">React js</span>
-                            <span class="tag">UI Design</span>
-                            <span class="tag">API</span>
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Landing Page
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">HTML</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">CSS</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 6 - Movies App -->
+            <div class="project-card bg-gray-900 rounded-2xl overflow-hidden shadow-xl cursor-pointer" onclick="openModal('movies')">
+                <div class="relative overflow-hidden group">
+                    <div class="w-full h-64 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-film text-4xl mb-2"></i>
+                            <h3 class="text-xl font-bold">Movies App</h3>
                         </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-2">MovieScope</h3>
+                            <p class="text-sm opacity-90">Movies info with modern UI</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        API App
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">React</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">UI Design</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">API</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+   <!-- Project Modals -->
+<!-- KRONOS Modal -->
+<div id="kronos-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+        <div class="relative">
+            <button onclick="closeModal('kronos')" class="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center text-white">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Carousel for KRONOS -->
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+                <div class="carousel-container" id="kronos-carousel">
+                    <div class="carousel-slide active">
+                        <img src="src/assets/kronos1.png" alt="KRONOS" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/kronos2.png" alt="KRONOS" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/kronos3.png" alt="KRONOS" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/kronos4.png" alt="KRONOS" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="carousel-btn carousel-prev" onclick="prevSlide('kronos-carousel')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" onclick="nextSlide('kronos-carousel')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide('kronos-carousel', 1)"></span>
+                    <span class="indicator" onclick="currentSlide('kronos-carousel', 2)"></span>
+                    <span class="indicator" onclick="currentSlide('kronos-carousel', 3)"></span>
+                    <span class="indicator" onclick="currentSlide('kronos-carousel', 4)"></span>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">KRONOS E-Commerce Platform</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    A full-stack e-commerce platform for a clothing brand built with modern technologies. 
+                    Features include user authentication, product catalog, shopping cart, secure payment processing with Stripe, 
+                    order management, and an admin dashboard for inventory control.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-blue-400 mb-3">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> User Authentication & Authorization</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Product Catalog with Search & Filter</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Shopping Cart & Wishlist</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Secure Payment with Stripe</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Order Tracking & Management</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Admin Dashboard</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-purple-400 mb-3">Technologies Used</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">React.js</span>
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-green-700 text-white px-3 py-1 rounded-full text-sm">Express.js</span>
+                            <span class="bg-green-800 text-white px-3 py-1 rounded-full text-sm">MongoDB</span>
+                            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Stripe</span>
+                            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">JWT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="#" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-external-link-alt"></i> View Live Demo
+                    </a>
+                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Golden Home Modal -->
+<div id="goldenhome-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+        <div class="relative">
+            <button onclick="closeModal('goldenhome')" class="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center text-white">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Carousel for Golden Home -->
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+                <div class="carousel-container" id="goldenhome-carousel">
+                    <div class="carousel-slide active">
+                        <img src="src/assets/goldenhome1.png" alt="Golden Home" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/goldenhome2.png" alt="Golden Home" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/goldenhome3.png" alt="Golden Home" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/goldenhome4.png" alt="Golden Home" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="carousel-btn carousel-prev" onclick="prevSlide('goldenhome-carousel')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" onclick="nextSlide('goldenhome-carousel')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide('goldenhome-carousel', 1)"></span>
+                    <span class="indicator" onclick="currentSlide('goldenhome-carousel', 2)"></span>
+                    <span class="indicator" onclick="currentSlide('goldenhome-carousel', 3)"></span>
+                    <span class="indicator" onclick="currentSlide('goldenhome-carousel', 4)"></span>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Golden Home Construction Agency</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    A professional website for a construction agency showcasing their services, completed projects, 
+                    and company information. The site features a modern design with project galleries, 
+                    service descriptions, client testimonials, and a contact system for inquiries.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-orange-400 mb-3">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Responsive Design</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Project Portfolio Gallery</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Service Pages</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Contact Form</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Client Testimonials</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Company Information</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-purple-400 mb-3">Technologies Used</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">HTML5</span>
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">CSS3</span>
+                            <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Bootstrap</span>
+                            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">PHP</span>
+                            <span class="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="#" class="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-external-link-alt"></i> View Live Demo
+                    </a>
+                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mawaqit Modal -->
+<div id="mawaqit-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+        <div class="relative">
+            <button onclick="closeModal('mawaqit')" class="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center text-white">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Carousel for Mawaqit -->
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+                <div class="carousel-container" id="mawaqit-carousel">
+                    <div class="carousel-slide active">
+                        <img src="src/assets/mawaqit1.png" alt="Mawaqit" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/mawaqit2.png" alt="Mawaqit" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/mawaqit3.png" alt="Mawaqit" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/mawaqit4.png" alt="Mawaqit" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="carousel-btn carousel-prev" onclick="prevSlide('mawaqit-carousel')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" onclick="nextSlide('mawaqit-carousel')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide('mawaqit-carousel', 1)"></span>
+                    <span class="indicator" onclick="currentSlide('mawaqit-carousel', 2)"></span>
+                    <span class="indicator" onclick="currentSlide('mawaqit-carousel', 3)"></span>
+                    <span class="indicator" onclick="currentSlide('mawaqit-carousel', 4)"></span>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Mawaqit - Prayer Times App</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    A beautiful React application that displays accurate prayer times in real-time. 
+                    The app features an elegant Islamic-inspired design with automatic location detection, 
+                    multiple calculation methods, and a clean user interface that adapts to different screen sizes.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-green-400 mb-3">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Real-time Prayer Times</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Automatic Location Detection</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Beautiful Islamic Design</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Responsive Layout</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Multiple Calculation Methods</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Time Until Next Prayer</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-purple-400 mb-3">Technologies Used</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">React.js</span>
+                            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Adhan API</span>
+                            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Geolocation API</span>
+                            <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="https://mohamedmaamar.me/prayer-times-app" target="_blank" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-external-link-alt"></i> View Live Demo
+                    </a>
+                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fab fa-behance"></i> View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Weather Modal -->
+<div id="weather-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+        <div class="relative">
+            <button onclick="closeModal('weather')" class="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center text-white">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Carousel for Weather App -->
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+                <div class="carousel-container" id="weather-carousel">
+                    <div class="carousel-slide active">
+                        <img src="src/assets/weather1.png" alt="Weather" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/weather2.png" alt="Weather" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/weather3.png" alt="Weather" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/weather4.png" alt="Weather" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="carousel-btn carousel-prev" onclick="prevSlide('weather-carousel')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" onclick="nextSlide('weather-carousel')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide('weather-carousel', 1)"></span>
+                    <span class="indicator" onclick="currentSlide('weather-carousel', 2)"></span>
+                    <span class="indicator" onclick="currentSlide('weather-carousel', 3)"></span>
+                    <span class="indicator" onclick="currentSlide('weather-carousel', 4)"></span>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Weather App with API Integration</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    A modern weather application that provides real-time weather information for Moroccan cities. 
+                    Features current weather conditions, 5-day forecasts, beautiful weather animations, 
+                    and an intuitive user interface that makes checking the weather a delightful experience.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Real-time Weather Data</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> 5-Day Weather Forecast</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Moroccan Cities Focus</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Weather Animations</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Temperature Units Toggle</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Mobile Responsive</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-purple-400 mb-3">Technologies Used</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">React.js</span>
+                            <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">Weather API</span>
+                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Axios</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="https://mohamedmaamar.me/weather-app-morocco" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fas fa-external-link-alt"></i> View Live Demo
+                    </a>
+                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FitFlex Modal -->
+<div id="fitflex-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+        <div class="relative">
+            <button onclick="closeModal('fitflex')" class="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center text-white">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Carousel for FitFlex -->
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+                <div class="carousel-container" id="fitflex-carousel">
+                    <div class="carousel-slide active">
+                        <img src="src/assets/fitflex1.png" alt="FitFlex" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/fitflex2.png" alt="FitFlex" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/fitflex3.png" alt="FitFlex" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/fitflex4.png" alt="FitFlex" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="carousel-btn carousel-prev" onclick="prevSlide('fitflex-carousel')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" onclick="nextSlide('fitflex-carousel')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentSlide('fitflex-carousel', 1)"></span>
+                    <span class="indicator" onclick="currentSlide('fitflex-carousel', 2)"></span>
+                    <span class="indicator" onclick="currentSlide('fitflex-carousel', 3)"></span>
+                    <span class="indicator" onclick="currentSlide('fitflex-carousel', 4)"></span>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">FitFlex - Fitness Club Website</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    A modern, single-page fitness club website concept featuring dynamic sections for services, 
+                    trainers, membership plans, and facilities. The design emphasizes motivation and energy 
+                    with bold visuals, smooth animations, and an engaging user experience.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-red-400 mb-3">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Modern One-Page Design</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Trainer Profiles</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Membership Plans</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Facilities Showcase</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Class Schedules</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Contact Information</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-purple-400 mb-3">Technologies Used</h3>
+                       <div class="flex flex-wrap gap-2">
+                           <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">HTML5</span>
+                           <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">CSS3</span>
+                           <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
+                           <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Bootstrap</span>
+                           <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">jQuery</span>
+                       </div>
+                   </div>
+               </div>
+               
+               <div class="flex gap-4">
+                   <a href="https://mohamedmaamar.me/fitflex" target="_blank" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                       <i class="fas fa-external-link-alt"></i> View Live Demo
+                   </a>
+                   <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                       <i class="fab fa-github"></i> View Code
+                   </a>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+<!-- Movies Modal -->
+<div id="movies-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-50 flex items-center justify-center p-4">
+   <div class="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+       <div class="relative">
+           <button onclick="closeModal('movies')" class="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center text-white">
+               <i class="fas fa-times"></i>
+           </button>
+           
+           <!-- Carousel for Movies App -->
+           <div class="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+               <div class="carousel-container" id="movies-carousel">
+                    <div class="carousel-slide active">
+                        <img src="src/assets/movies1.png" alt="Movies" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/movies2.png" alt="Movies" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/movies3.png" alt="Movies" class="w-full h-full object-cover">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="src/assets/movies4.png" alt="Movies" class="w-full h-full object-cover">
+                    </div>
+                </div>
+               
+               <!-- Carousel Controls -->
+               <button class="carousel-btn carousel-prev" onclick="prevSlide('movies-carousel')">
+                   <i class="fas fa-chevron-left"></i>
+               </button>
+               <button class="carousel-btn carousel-next" onclick="nextSlide('movies-carousel')">
+                   <i class="fas fa-chevron-right"></i>
+               </button>
+               
+               <!-- Carousel Indicators -->
+               <div class="carousel-indicators">
+                   <span class="indicator active" onclick="currentSlide('movies-carousel', 1)"></span>
+                   <span class="indicator" onclick="currentSlide('movies-carousel', 2)"></span>
+                   <span class="indicator" onclick="currentSlide('movies-carousel', 3)"></span>
+                   <span class="indicator" onclick="currentSlide('movies-carousel', 4)"></span>
+               </div>
+           </div>
+           
+           <div class="p-8">
+               <h2 class="text-3xl font-bold text-white mb-4">MovieScope - Movies Information App</h2>
+               <p class="text-gray-300 mb-6 leading-relaxed">
+                   A modern React application that provides comprehensive movie information using external APIs. 
+                   Features include movie search, detailed information pages, ratings, trailers, cast information, 
+                   and a sleek user interface optimized for movie discovery and exploration.
+               </p>
+               
+               <div class="grid md:grid-cols-2 gap-6 mb-6">
+                   <div>
+                       <h3 class="text-xl font-semibold text-yellow-400 mb-3">Key Features</h3>
+                       <ul class="space-y-2 text-gray-300">
+                           <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Movie Search & Discovery</li>
+                           <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Detailed Movie Information</li>
+                           <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Ratings & Reviews</li>
+                           <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Cast & Crew Information</li>
+                           <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Trailer Integration</li>
+                           <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Responsive Design</li>
+                       </ul>
+                   </div>
+                   <div>
+                       <h3 class="text-xl font-semibold text-purple-400 mb-3">Technologies Used</h3>
+                       <div class="flex flex-wrap gap-2">
+                           <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">React.js</span>
+                           <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Movie API</span>
+                           <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
+                           <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">CSS3</span>
+                           <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Axios</span>
+                       </div>
+                   </div>
+               </div>
+               
+               <div class="flex gap-4">
+                   <a href="https://mohamedmaamar.me/moviescope" target="_blank" class="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                       <i class="fas fa-external-link-alt"></i> View Live Demo
+                   </a>
+                   <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2">
+                       <i class="fab fa-dribbble"></i> View Design
+                   </a>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's work together on your next project</p>
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fadeInUp">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-400">Let's work together on your next project</p>
             </div>
             
-            <div class="contact-content">
-                <div class="contact-info fade-in-left">
-                    <h3>Let's create something amazing together</h3>
-                    <p>
-                        I'm always interested in new opportunities and exciting projects. 
-                        Whether you need a website, mobile app, or brand identity, let's discuss 
-                        how I can help bring your vision to life.
-                    </p>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 rounded-2xl p-8 shadow-xl">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Let's create something amazing together</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            I'm always interested in new opportunities and exciting projects. 
+                            Whether you need a website, mobile app, or brand identity, let's discuss 
+                            how I can help bring your vision to life.
+                        </p>
+                    </div>
                     
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <span class="label">Email</span>
-                                <span class="value">mohamedmaamar7@gmail.com</span>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-colors duration-300">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-envelope text-2xl text-white"></i>
                             </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Email</h4>
+                            <p class="text-gray-300">mohamedmaamar7@gmail.com</p>
+                            <a href="mailto:mohamedmaamar7@gmail.com" class="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                                Send Email
+                            </a>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <span class="label">Phone</span>
-                                <span class="value">+212 613 433 722</span>
+                        
+                        <div class="text-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-colors duration-300">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-phone text-2xl text-white"></i>
                             </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Phone</h4>
+                            <p class="text-gray-300">+212 613 433 722</p>
+                            <a href="tel:+212613433722" class="inline-block mt-3 text-green-400 hover:text-green-300 transition-colors duration-200">
+                                Call Now
+                            </a>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <span class="label">Location</span>
-                                <span class="value">Casablanca, Morocco</span>
+                        
+                        <div class="text-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-colors duration-300">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-map-marker-alt text-2xl text-white"></i>
                             </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Location</h4>
+                            <p class="text-gray-300">Casablanca, Morocco</p>
+                            <span class="inline-block mt-3 text-purple-400">Available Worldwide</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="contact-form fade-in-right">
-                    <form id="contactForm" action="mailto:mohamedmaamar7@gmail.com" method="post" enctype="text/plain">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                    
+                    <div class="text-center mt-8">
+                        <div class="flex justify-center gap-6">
+                            <a href="https://github.com/maamar404" target="_blank" class="w-12 h-12 bg-gray-600 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-github text-xl text-white"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" class="w-12 h-12 bg-gray-600 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-linkedin-in text-xl text-white"></i>
+                            </a>
+                            <a href="https://behance.net/mohamedmaamar7" target="_blank" class="w-12 h-12 bg-gray-600 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-behance text-xl text-white"></i>
+                            </a>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
-                            Send Message
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
+    <footer class="bg-black py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 mb-4 md:mb-0">
                     <p>&copy; 2025 Mohamed Maamar. All rights reserved.</p>
                 </div>
                 
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#contact">Contact</a>
+                <div class="flex gap-6 mb-4 md:mb-0">
+                    <a href="#home" class="text-gray-400 hover:text-white transition-colors duration-200">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition-colors duration-200">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition-colors duration-200">Skills</a>
+                    <a href="#portfolio" class="text-gray-400 hover:text-white transition-colors duration-200">Portfolio</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-200">Contact</a>
                 </div>
                 
-                <div class="footer-social">
-                    <a href="https://github.com/maamar404" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i>
+                <div class="flex gap-4">
+                    <a href="https://github.com/maamar404" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-github text-xl"></i>
                     </a>
-                    <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-linkedin-in"></i>
+                    <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-linkedin-in text-xl"></i>
                     </a>
-                    <a href="https://behance.net/mohamedmaamar7" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-behance"></i>
+                    <a href="https://behance.net/mohamedmaamar7" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <i class="fab fa-behance text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('bg-gray-900', 'bg-opacity-95');
+            navbar.classList.remove('glass-effect');
+        } else {
+            navbar.classList.remove('bg-gray-900', 'bg-opacity-95');
+            navbar.classList.add('glass-effect');
+        }
+    });
+
+    // Carousel functionality
+    let carouselIntervals = {};
+
+    function initCarousel(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return; // Exit if carousel doesn't exist
+        
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            const indicators = carousel.parentElement.querySelectorAll('.indicator');
+            if (indicators[currentSlide]) {
+                indicators[currentSlide].classList.remove('active');
+            }
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            if (indicators[currentSlide]) {
+                indicators[currentSlide].classList.add('active');
+            }
+        }
+
+        function nextSlideAuto() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Auto-slide every 4 seconds
+        carouselIntervals[carouselId] = setInterval(nextSlideAuto, 4000);
+
+        // Pause auto-slide on hover
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(carouselIntervals[carouselId]);
+        });
+
+        // Resume auto-slide when not hovering
+        carousel.addEventListener('mouseleave', () => {
+            carouselIntervals[carouselId] = setInterval(nextSlideAuto, 4000);
+        });
+    }
+
+    function nextSlide(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+        
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const currentActive = carousel.querySelector('.carousel-slide.active');
+        const currentIndex = Array.from(slides).indexOf(currentActive);
+        
+        slides[currentIndex].classList.remove('active');
+        const indicators = carousel.parentElement.querySelectorAll('.indicator');
+        if (indicators[currentIndex]) {
+            indicators[currentIndex].classList.remove('active');
+        }
+        
+        const nextIndex = (currentIndex + 1) % slides.length;
+        slides[nextIndex].classList.add('active');
+        if (indicators[nextIndex]) {
+            indicators[nextIndex].classList.add('active');
+        }
+    }
+
+    function prevSlide(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+        
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const currentActive = carousel.querySelector('.carousel-slide.active');
+        const currentIndex = Array.from(slides).indexOf(currentActive);
+        
+        slides[currentIndex].classList.remove('active');
+        const indicators = carousel.parentElement.querySelectorAll('.indicator');
+        if (indicators[currentIndex]) {
+            indicators[currentIndex].classList.remove('active');
+        }
+        
+        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slides[prevIndex].classList.add('active');
+        if (indicators[prevIndex]) {
+            indicators[prevIndex].classList.add('active');
+        }
+    }
+
+    function currentSlide(carouselId, n) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+        
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const currentActive = carousel.querySelector('.carousel-slide.active');
+        const currentIndex = Array.from(slides).indexOf(currentActive);
+        
+        slides[currentIndex].classList.remove('active');
+        const indicators = carousel.parentElement.querySelectorAll('.indicator');
+        if (indicators[currentIndex]) {
+            indicators[currentIndex].classList.remove('active');
+        }
+        
+        if (slides[n - 1]) {
+            slides[n - 1].classList.add('active');
+        }
+        if (indicators[n - 1]) {
+            indicators[n - 1].classList.add('active');
+        }
+    }
+
+    // Enhanced Modal functions with carousel integration
+    function openModal(projectId) {
+        const modal = document.getElementById(projectId + '-modal');
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Initialize carousel for this modal
+        const carouselId = projectId + '-carousel';
+        setTimeout(() => {
+            initCarousel(carouselId);
+        }, 100); // Small delay to ensure modal is fully rendered
+    }
+
+    function closeModal(projectId) {
+        const modal = document.getElementById(projectId + '-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        
+        // Clear carousel interval
+        const carouselId = projectId + '-carousel';
+        if (carouselIntervals[carouselId]) {
+            clearInterval(carouselIntervals[carouselId]);
+            delete carouselIntervals[carouselId];
+        }
+    }
+
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal-backdrop').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                
+                // Clear all carousel intervals when closing modal
+                Object.keys(carouselIntervals).forEach(carouselId => {
+                    clearInterval(carouselIntervals[carouselId]);
+                    delete carouselIntervals[carouselId];
+                });
+            }
+        });
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-backdrop').forEach(modal => {
+                modal.classList.add('hidden');
+            });
+            document.body.style.overflow = 'auto';
+            
+            // Clear all carousel intervals when closing modals
+            Object.keys(carouselIntervals).forEach(carouselId => {
+                clearInterval(carouselIntervals[carouselId]);
+                delete carouselIntervals[carouselId];
+            });
+        }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.animate-fadeInUp, .animate-fadeInLeft, .animate-fadeInRight').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        observer.observe(el);
+    });
+
+    // Initialize animations when page loads
+    window.addEventListener('load', function() {
+        console.log('Portfolio website loaded successfully with carousel functionality!');
+        
+        // Preload carousel images for better performance
+        const preloadImages = [
+            'img/kronos.png', 'img/kronos-shop.png', 'img/kronos-product.png', 'img/kronos-cart.png',
+            'img/goldenhome.png', 'img/goldenhome-services.png', 'img/goldenhome-projects.png', 'img/goldenhome-contact.png',
+            'img/mawaqit.png', 'img/mawaqit-settings.png', 'img/mawaqit-mobile.png', 'img/mawaqit-dark.png',
+            'img/fitflex.png', 'img/fitflex-services.png', 'img/fitflex-trainers.png', 'img/fitflex-classes.png'
+        ];
+        
+        preloadImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    });
+
+    // Touch support for mobile carousel navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function handleTouch(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe(carouselId);
+        });
+    }
+
+    function handleSwipe(carouselId) {
+        const swipeThreshold = 50;
+        
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left - next slide
+            nextSlide(carouselId);
+        }
+        
+        if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right - previous slide
+            prevSlide(carouselId);
+        }
+    }
+
+    // Initialize touch support for all carousels
+    document.addEventListener('DOMContentLoaded', function() {
+        const carouselIds = ['kronos-carousel', 'goldenhome-carousel', 'mawaqit-carousel', 'weather-carousel', 'fitflex-carousel', 'movies-carousel'];
+        carouselIds.forEach(id => {
+            handleTouch(id);
+        });
+    });
+</script>
 </body>
 </html>
