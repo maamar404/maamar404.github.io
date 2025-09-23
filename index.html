@@ -61,6 +61,38 @@
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+        }
+    </style>
 
 </head>
 <body class="font-inter bg-gray-900 text-white overflow-x-hidden">
@@ -107,64 +139,60 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 opacity-90"></div>
-        
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="text-center lg:text-left space-y-8 animate-fadeInLeft">
-                    <div class="space-y-4">
-                        <h1 class="text-5xl lg:text-5xl font-bold leading-tight">
-                            Hi, I'm <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Mohamed Maamar</span>
-                        </h1>
-                        <h2 class="text-2xl lg:text-3xl text-gray-300 font-light">Full Stack Developer & Creative Designer</h2>
-                        <p class="text-lg text-gray-400 max-w-2xl">
-                            I craft digital experiences that blend functionality with beautiful design. 
-                            Specializing in web development, UI/UX design, and graphic design.
-                        </p>
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20">
+                <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left space-y-6 sm:space-y-8 animate-fadeInLeft order-2 lg:order-1">
+                        <div class="space-y-4 sm:space-y-6">
+                            <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                                Hi, I'm <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Mohamed Maamar</span>
+                            </h1>
+                            <h2 class="hero-subtitle text-xl sm:text-2xl lg:text-3xl text-gray-300 font-light">
+                                Full Stack Developer & Creative Designer
+                            </h2>
+                            <p class="hero-description text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0">
+                                I craft digital experiences that blend functionality with beautiful design. 
+                                Specializing in web development, UI/UX design, and graphic design.
+                            </p>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                            <a href="#portfolio" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg text-center">
+                                View My Work
+                            </a>
+                            <a href="src/assets/Mohamed_Maamar_CV.pdf" download="Mohamed_Maamar_CV.pdf" class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 text-center">
+                                Download CV
+                            </a>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="flex gap-4 sm:gap-6 justify-center lg:justify-start pt-6 sm:pt-8">
+                            <a href="https://github.com/maamar404" target="_blank" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-github text-lg sm:text-xl"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-linkedin-in text-lg sm:text-xl"></i>
+                            </a>
+                            <a href="https://behance.net/mohamedmaamar7" target="_blank" class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                                <i class="fab fa-behance text-lg sm:text-xl"></i>
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#portfolio" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                            View My Work
-                        </a>
-                        <a href="src/assets/Mohamed_Maamar_CV.pdf" download="Mohamed_Maamar_CV.pdf" class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
-                            Download CV
-                        </a>
-                    </div>
-                    
-                    <!-- Social Links -->
-                    <div class="flex gap-6 justify-center lg:justify-start pt-8">
-                        <a href="https://github.com/maamar404" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/maamar-mohamed" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="https://behance.net/mohamedmaamar7" target="_blank" class="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-                            <i class="fab fa-behance text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="flex justify-center lg:justify-end animate-fadeInRight">
-                    <div class="relative">
-                        <div class="w-80 h-80 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse-slow"></div>
-                        <img src="src/assets/logo1.png" alt="Mohamed Maamar" class="absolute inset-4 w-72 h-72 rounded-full object-cover shadow-2xl">
+                    <!-- Profile Image -->
+                    <div class="flex justify-center items-center animate-fadeInRight order-1 lg:order-2">
+                        <div class="relative flex items-center justify-center">
+                            <!-- Animated background circle -->
+                            <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse-slow opacity-5"></div>
+                            <!-- Logo image - perfectly centered -->
+                            <img src="src/assets/logo1.png" alt="Mohamed Maamar" class="absolute w-56 h-56 sm:w-72 sm:h-72 lg:w-88 lg:h-88 rounded-full object-cover ">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl text-white opacity-70"></i>
-        </div>
     </section>
 
     <!-- About Section -->
